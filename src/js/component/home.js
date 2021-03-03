@@ -7,34 +7,52 @@ import { render } from "react-dom";
 //create your first component
 
 export function Home() {
-	const [state, setState] = useState({});
+	const [state, setState] = useState({
+		red: "",
+		yellow: "",
+		green: ""
+	});
 
-	console.log(this.state);
-	const redExtraClass = "";
-	if (this.state.selectedLight == "red") redExtraClass = "selected";
-	const yellowExtraClass = "";
-	if (this.state.selectedLight == "yellow") yellowExtraClass = "selected";
-	const greenExtraClass = "";
-	if (this.state.selectedLight == "green") greenExtraClass = "selected";
+	const stylesBorder = {
+		border: "3px solid yellow",
+		height: "60px",
+		width: "60px"
+	};
 
 	return (
 		<div>
-			<div id="trafficTop"></div>
-			<div id="container">
+			<div className="text-center" id="topHandle"></div>
+
+			<div className="text-center" id="mainDiv">
 				<div
-					className={"red light" + redExtraClass}
+					className="rounded-circle bg-danger"
+					style={
+						state.red
+							? stylesBorder
+							: { height: "60px", width: "60px" }
+					}
 					onClick={() =>
-						this.setState({ selectedLight: "red" })
+						setState({ red: "clicked", yellow: "", green: "" })
 					}></div>
 				<div
-					className={"yellow light" + yellowExtraClass}
+					className="rounded-circle bg-warning"
+					style={
+						state.yellow
+							? stylesBorder
+							: { height: "60px", width: "60px" }
+					}
 					onClick={() =>
-						this.setState({ selectedLight: "yellow" })
+						setState({ red: "", yellow: "clicked", green: "" })
 					}></div>
 				<div
-					className={"green light" + greenExtraClass}
+					className="rounded-circle bg-success"
+					style={
+						state.green
+							? stylesBorder
+							: { height: "60px", width: "60px" }
+					}
 					onClick={() =>
-						this.setState({ selectedLight: "green" })
+						setState({ red: "", yellow: "", green: "clicked" })
 					}></div>
 			</div>
 		</div>
